@@ -67,7 +67,7 @@ export default function DisclaimerModal() {
 
                 {/* Header */}
                 <div className="px-8 pt-8 pb-6 border-b border-white/10">
-                    <h1 id="modal-title" className="text-2xl font-bold text-white tracking-tight mb-2 uppercase font-inter">
+                    <h1 id="modal-title" className="text-2xl font-light text-white tracking-tight mb-2 uppercase font-inter">
                         Important Information
                     </h1>
                     <p className="text-gray-300 text-sm font-light leading-relaxed">
@@ -156,7 +156,7 @@ export default function DisclaimerModal() {
                     <button
                         onClick={handleAccept}
                         disabled={!isFormValid}
-                        className={`w-full py-4 px-8 text-sm font-bold tracking-widest uppercase rounded-sm transition-all duration-300 font-inter border
+                        className={`w-full py-4 px-8 text-sm font-medium tracking-widest uppercase rounded-sm transition-all duration-300 font-inter border
                             ${isFormValid
                                 ? "bg-basquiat-gold border-basquiat-gold text-basquiat-black hover:bg-white hover:border-white shadow-[0_0_20px_rgba(255,199,44,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]"
                                 : "bg-white/5 border-white/10 text-white/20 cursor-not-allowed"

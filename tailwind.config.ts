@@ -7,17 +7,32 @@ const config: Config = {
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
+        container: {
+            center: true,
+            padding: {
+                DEFAULT: '1.5rem',
+                lg: '3rem',
+            },
+        },
         extend: {
             colors: {
                 basquiat: {
-                    black: "#1a1a1a", // Example dark color
-                    white: "#f5f5f5", // Example light color
-                    blue: "#003B5C",  // Deep Institution Blue
-                    gold: "#FFC72C",  // Vibrant Crown Gold
+                    navy: {
+                        DEFAULT: "#0B2545", // Hero bg, dark sections
+                        darker: "#060F1E",  // Stats bar, footer
+                        darkest: "#040C18", // Footer bottom strip
+                    },
+                    gold: "#F0B429",      // Accents ONLY
+                    blue: "#1B5FA8",      // Buttons, links
+                    white: "#E8E4DC",     // "Off-white" -> Text on dark backgrounds
+                    "warm-white": "#F8F7F4", // Light section backgrounds
+                    "pure-white": "#FFFFFF", // Nav background when scrolled
+                    black: "#0A0A0A",     // "Near-black" -> Text on light backgrounds
                 },
             },
             fontFamily: {
-                sans: ["var(--font-inter)"],
+                sans: ["var(--font-inter)", "sans-serif"],
+                serif: ["var(--font-cormorant)", "serif"],
             },
             borderRadius: {
                 none: "0",

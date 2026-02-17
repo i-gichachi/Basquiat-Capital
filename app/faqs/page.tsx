@@ -1,6 +1,6 @@
 "use client";
 
-import { ScrollReveal } from "@/components/ScrollReveal";
+import { FadeUp, SlideLeft, GoldLine, Cascade } from "@/components/Animate";
 import { FAQItem } from "@/components/FAQItem";
 
 export default function FAQsPage() {
@@ -37,53 +37,57 @@ export default function FAQsPage() {
 
     return (
         <main className="min-h-screen bg-white text-basquiat-black">
-            <div className="container mx-auto px-6 lg:px-12 pt-32 pb-24">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-12">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
                     {/* Left Column - Sticky Header */}
                     <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit">
-                        <ScrollReveal>
-                            <h1 className="text-4xl md:text-5xl font-light tracking-tight mb-6 text-basquiat-blue">
+                        <SlideLeft delay={0}>
+                            <h1 className="font-serif text-[42px] leading-tight tracking-tight mb-6 text-basquiat-blue">
                                 Frequently Asked <br className="hidden lg:block" /> Questions
                             </h1>
-                            <div className="w-12 h-1 bg-basquiat-gold mb-8"></div>
-                            <p className="text-lg text-gray-500 font-light leading-relaxed mb-8">
+                        </SlideLeft>
+                        <GoldLine delay={100} />
+                        <FadeUp delay={200}>
+                            <p className="font-sans text-[16px] text-gray-500 font-light leading-relaxed mb-8 mt-6">
                                 Clear insights into our global operations, compliance standards, and value delivery models.
                             </p>
+                        </FadeUp>
 
-                            <div className="hidden lg:block">
-                                <p className="text-sm font-semibold uppercase tracking-widest text-basquiat-black mb-4">
-                                    Need more details?
-                                </p>
-                                <a
-                                    href="/contact"
-                                    className="text-basquiat-blue hover:text-basquiat-gold transition-colors duration-300 font-medium flex items-center gap-2 group"
-                                >
-                                    Contact our team
-                                    <span className="block transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-                                </a>
-                            </div>
-                        </ScrollReveal>
+                        <FadeUp delay={300} className="hidden lg:block">
+                            <p className="font-sans text-[11px] font-bold uppercase tracking-widest text-basquiat-black mb-4">
+                                Need more details?
+                            </p>
+                            <a
+                                href="/contact"
+                                className="text-basquiat-blue hover:text-basquiat-gold transition-colors duration-300 font-medium flex items-center gap-2 group font-serif text-lg italic"
+                            >
+                                Contact our team
+                                <span className="block transform group-hover:translate-x-1 transition-transform duration-300 not-italic">→</span>
+                            </a>
+                        </FadeUp>
                     </div>
 
                     {/* Right Column - FAQ List */}
                     <div className="lg:col-span-8">
                         <div className="border-t border-gray-200">
                             {faqs.map((faq, i) => (
-                                <ScrollReveal key={i} delay={i * 0.1}>
-                                    <FAQItem question={faq.q} answer={faq.a} />
-                                </ScrollReveal>
+                                <Cascade key={i} index={i}>
+                                    <div className="border-b border-gray-200">
+                                        <FAQItem question={faq.q} answer={faq.a} />
+                                    </div>
+                                </Cascade>
                             ))}
                         </div>
 
                         {/* Mobile Only CTA */}
-                        <div className="mt-12 lg:hidden">
+                        <FadeUp delay={400} className="mt-12 lg:hidden">
                             <a
                                 href="/contact"
-                                className="inline-block border border-basquiat-black text-basquiat-black px-8 py-3 font-medium hover:bg-basquiat-black hover:text-white transition-colors duration-300 uppercase tracking-wider text-sm"
+                                className="inline-block border border-basquiat-black text-basquiat-black px-8 py-3 font-bold hover:bg-basquiat-black hover:text-white transition-colors duration-300 uppercase tracking-widest text-xs"
                             >
                                 Contact Us
                             </a>
-                        </div>
+                        </FadeUp>
                     </div>
                 </div>
             </div>

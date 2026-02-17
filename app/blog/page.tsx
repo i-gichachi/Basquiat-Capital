@@ -1,6 +1,6 @@
-import { ScrollReveal } from "@/components/ScrollReveal";
 import Link from "next/link";
 import Image from "next/image";
+import { FadeUp, SlideLeft, ScaleIn, GoldLine, Cascade } from "@/components/Animate";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 export default function BlogPage() {
@@ -100,125 +100,194 @@ export default function BlogPage() {
         <main className="flex flex-col min-h-screen bg-white pt-20">
             {/* Hero Section */}
             <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
+                <div className="absolute inset-0 z-0 text-center">
                     <Image
                         src={heroImage}
                         alt="Market Insights Background"
                         fill
-                        className="object-cover"
+                        className="object-cover grayscale"
                         priority
                     />
                     <div className="absolute inset-0 bg-basquiat-blue/90 mix-blend-multiply" />
                     <div className="absolute inset-0 bg-black/30" />
                 </div>
 
-                <div className="relative z-10 container mx-auto px-6 text-center">
-                    <ScrollReveal>
+                <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 text-center">
+                    <FadeUp delay={0}>
                         <span className="inline-block py-1 px-3 mb-6 border border-basquiat-gold/50 text-basquiat-gold text-xs font-bold tracking-[0.2em] uppercase bg-black/20 backdrop-blur-sm">
                             Our Latest Thinking
                         </span>
-                        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+                    </FadeUp>
+                    <SlideLeft delay={100}>
+                        <h1 className="font-serif text-[42px] md:text-[80px] font-light text-white mb-6 tracking-tight leading-[0.9]">
                             Market Insights
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
+                    </SlideLeft>
+                    <FadeUp delay={250}>
+                        <p className="font-sans text-[16px] md:text-[20px] text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
                             Expert perspectives on wealth management, investment strategies, and the evolving financial landscape.
                         </p>
-                    </ScrollReveal>
+                    </FadeUp>
                 </div>
             </section>
 
-            {/* Blog Grid */}
-            <section className="py-24 bg-gray-50">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-                        {posts.map((post, i) => (
-                            <ScrollReveal key={i} delay={i * 0.05}>
-                                <Link href={`/blog/${post.slug}`} className="group flex flex-col h-full bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-basquiat-blue/5">
-                                    {/* Image Container */}
-                                    <div className="relative h-64 overflow-hidden bg-gray-200">
-                                        <Image
-                                            src={blogImages[i % blogImages.length]}
-                                            alt={post.title}
-                                            fill
-                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-basquiat-blue/0 group-hover:bg-basquiat-blue/10 transition-colors duration-500" />
+            {/* Split Content Section */}
+            <section className="py-12 md:py-20 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
-                                        {/* Category Badge */}
-                                        <div className="absolute top-4 left-4">
-                                            <span className="bg-white/95 backdrop-blur-sm text-basquiat-blue text-[10px] font-bold px-3 py-1.5 uppercase tracking-widest shadow-sm">
-                                                {post.category}
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    {/* Content */}
-                                    <div className="flex flex-col flex-grow p-8 border-x border-b border-gray-100 group-hover:border-transparent transition-colors duration-500">
-                                        <div className="flex items-center gap-4 text-xs font-medium text-gray-400 mb-4 tracking-wider uppercase">
-                                            <div className="flex items-center gap-1.5 text-basquiat-gold">
-                                                <Calendar className="w-3.5 h-3.5" />
-                                                {post.date}
-                                            </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <Clock className="w-3.5 h-3.5" />
-                                                {post.readTime}
-                                            </div>
-                                        </div>
-
-                                        <h3 className="text-xl md:text-2xl font-bold text-basquiat-black mb-4 leading-tight group-hover:text-basquiat-blue transition-colors duration-300">
-                                            {post.title}
-                                        </h3>
-
-                                        <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3">
-                                            {post.excerpt}
-                                        </p>
-
-                                        <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between group-hover:border-basquiat-gold/30 transition-colors duration-300">
-                                            <span className="text-xs font-bold text-basquiat-black uppercase tracking-widest group-hover:text-basquiat-blue transition-colors duration-300">
-                                                Read Article
-                                            </span>
-                                            <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-50 text-basquiat-black group-hover:bg-basquiat-gold group-hover:text-white transition-all duration-300">
-                                                <ArrowRight className="w-4 h-4 transform -rotate-45 group-hover:rotate-0 transition-transform duration-300" />
-                                            </span>
-                                        </div>
-                                    </div>
+                    {/* Section 1: Market Intelligence */}
+                    <div className="mb-12">
+                        <div className="flex items-end justify-between mb-12 border-b border-gray-200 pb-4">
+                            <div>
+                                <SlideLeft delay={0}>
+                                    <h2 className="font-serif text-[32px] font-light text-basquiat-black mb-2">Market Intelligence</h2>
+                                    <p className="font-sans text-[15px] text-gray-500 font-light">Deep dives into global trends and asset allocation.</p>
+                                </SlideLeft>
+                            </div>
+                            <FadeUp delay={100}>
+                                <Link href="/blog/category/market-intelligence" className="hidden md:flex items-center gap-2 text-basquiat-blue font-bold uppercase text-[12px] tracking-widest hover:text-basquiat-gold transition-colors">
+                                    View All <ArrowRight className="w-4 h-4" />
                                 </Link>
-                            </ScrollReveal>
-                        ))}
+                            </FadeUp>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+                            {posts.filter(p => ["Market Analysis", "Strategy", "Investing"].includes(p.category)).map((post, i) => (
+                                <Cascade key={i} index={i}>
+                                    <Link href={`/blog/${post.slug}`} className="group flex flex-col h-full bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-basquiat-blue/5 border border-gray-100">
+                                        <div className="relative h-56 overflow-hidden bg-gray-200">
+                                            <Image
+                                                src={blogImages[i % blogImages.length]}
+                                                alt={post.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                            />
+                                            <div className="absolute inset-0 bg-basquiat-blue/0 group-hover:bg-basquiat-blue/10 transition-colors duration-500" />
+                                            <div className="absolute top-4 left-4">
+                                                <span className="bg-basquiat-blue text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-widest shadow-sm">
+                                                    {post.category}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col flex-grow p-8">
+                                            <div className="flex items-center gap-4 text-[11px] font-medium text-gray-400 mb-4 tracking-wider uppercase">
+                                                <div className="flex items-center gap-1.5 text-basquiat-gold">
+                                                    <Calendar className="w-3.5 h-3.5" />
+                                                    {post.date}
+                                                </div>
+                                                <div className="flex items-center gap-1.5">
+                                                    <Clock className="w-3.5 h-3.5" />
+                                                    {post.readTime}
+                                                </div>
+                                            </div>
+                                            <h3 className="font-serif text-2xl font-light text-basquiat-black mb-4 leading-tight group-hover:text-basquiat-blue transition-colors duration-300">
+                                                {post.title}
+                                            </h3>
+                                            <p className="text-gray-600 text-[14px] leading-relaxed mb-6 line-clamp-3 font-light">
+                                                {post.excerpt}
+                                            </p>
+                                            <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                                                <span className="text-[11px] font-bold text-basquiat-black uppercase tracking-widest group-hover:text-basquiat-blue transition-colors duration-300">
+                                                    Read Article
+                                                </span>
+                                                <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-basquiat-gold transition-colors duration-300 transform group-hover:translate-x-1" />
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </Cascade>
+                            ))}
+                        </div>
                     </div>
+
+                    {/* Section 2: Financial Education */}
+                    <div>
+                        <div className="flex items-end justify-between mb-12 border-b border-gray-200 pb-4">
+                            <div>
+                                <SlideLeft delay={0}>
+                                    <h2 className="font-serif text-[32px] font-light text-basquiat-black mb-2">Financial Education</h2>
+                                    <p className="font-sans text-[15px] text-gray-500 font-light">Foundational knowledge for building long-term wealth.</p>
+                                </SlideLeft>
+                            </div>
+                            <FadeUp delay={100}>
+                                <Link href="/blog/category/financial-education" className="hidden md:flex items-center gap-2 text-basquiat-blue font-bold uppercase text-[12px] tracking-widest hover:text-basquiat-gold transition-colors">
+                                    View All <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </FadeUp>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+                            {posts.filter(p => !["Market Analysis", "Strategy", "Investing"].includes(p.category)).map((post, i) => (
+                                <Cascade key={i} index={i}>
+                                    <Link href={`/blog/${post.slug}`} className="group flex flex-col h-full bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-basquiat-blue/5 border border-gray-100">
+                                        <div className="relative h-56 overflow-hidden bg-gray-200">
+                                            <Image
+                                                src={blogImages[(i + 2) % blogImages.length]}
+                                                alt={post.title}
+                                                fill
+                                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                            />
+                                            <div className="absolute inset-0 bg-basquiat-blue/0 group-hover:bg-basquiat-blue/10 transition-colors duration-500" />
+                                            <div className="absolute top-4 left-4">
+                                                <span className="bg-white text-basquiat-black text-[10px] font-bold px-3 py-1.5 uppercase tracking-widest shadow-sm border border-gray-100">
+                                                    {post.category}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="flex flex-col flex-grow p-8">
+                                            <div className="flex items-center gap-4 text-[11px] font-medium text-gray-400 mb-4 tracking-wider uppercase">
+                                                <div className="flex items-center gap-1.5 text-basquiat-gold">
+                                                    <Calendar className="w-3.5 h-3.5" />
+                                                    {post.date}
+                                                </div>
+                                                <div className="flex items-center gap-1.5">
+                                                    <Clock className="w-3.5 h-3.5" />
+                                                    {post.readTime}
+                                                </div>
+                                            </div>
+                                            <h3 className="font-serif text-2xl font-light text-basquiat-black mb-4 leading-tight group-hover:text-basquiat-blue transition-colors duration-300">
+                                                {post.title}
+                                            </h3>
+                                            <p className="text-gray-600 text-[14px] leading-relaxed mb-6 line-clamp-3 font-light">
+                                                {post.excerpt}
+                                            </p>
+                                            <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                                                <span className="text-[11px] font-bold text-basquiat-black uppercase tracking-widest group-hover:text-basquiat-blue transition-colors duration-300">
+                                                    Read Article
+                                                </span>
+                                                <ArrowRight className="w-4 h-4 text-gray-300 group-hover:text-basquiat-gold transition-colors duration-300 transform group-hover:translate-x-1" />
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </Cascade>
+                            ))}
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
             {/* Newsletter Section */}
-            <section className="py-24 bg-basquiat-blue relative overflow-hidden">
-                <div className="absolute inset-0 opacity-10">
-                    <Image
-                        src="/images/wall_st.png"
-                        alt="Pattern"
-                        fill
-                        className="object-cover grayscale"
-                    />
-                </div>
-                <div className="container mx-auto px-6 relative z-10 text-center">
-                    <ScrollReveal>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                            Stay Ahead of the Market
+            <section className="py-12 md:py-24 bg-basquiat-black relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20 bg-[url('/images/secondary_bg.jpg')] bg-cover bg-center mix-blend-overlay"></div>
+                <div className="max-w-4xl mx-auto px-6 lg:px-12 relative z-10 text-center">
+                    <SlideLeft delay={0}>
+                        <h2 className="font-serif text-[42px] md:text-[52px] font-light text-white mb-6 tracking-tight">
+                            Intelligence, Quantity & Quality.
                         </h2>
-                        <p className="text-gray-300 mb-10 max-w-2xl mx-auto text-lg font-light">
-                            Join our exclusive network to receive weekly insights, market analysis, and wealth management strategies directly to your inbox.
+                    </SlideLeft>
+                    <FadeUp delay={100}>
+                        <p className="text-gray-400 mb-12 max-w-xl mx-auto text-[18px] font-sans font-light leading-relaxed">
+                            We provide deep market access and insights that others miss. Ready to leverage our expertise?
                         </p>
-
-                        <form className="max-w-md mx-auto flex flex-col md:flex-row gap-4">
-                            <input
-                                type="email"
-                                placeholder="Email Address"
-                                className="flex-grow px-6 py-4 bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:bg-white/20 transition-all duration-300 font-light"
-                            />
-                            <button className="px-8 py-4 bg-basquiat-gold text-basquiat-black font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300">
-                                Subscribe
-                            </button>
-                        </form>
-                    </ScrollReveal>
+                    </FadeUp>
+                    <FadeUp delay={200}>
+                        <Link
+                            href="/contact"
+                            className="inline-flex items-center gap-3 px-10 py-5 bg-basquiat-gold text-basquiat-black font-bold uppercase tracking-widest hover:bg-white transition-colors duration-300 text-[13px]"
+                        >
+                            Contact Us Directly <ArrowRight className="w-5 h-5" />
+                        </Link>
+                    </FadeUp>
                 </div>
             </section>
         </main>
