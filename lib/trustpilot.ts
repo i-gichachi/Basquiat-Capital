@@ -17,7 +17,7 @@ export const generateTrustpilotInviteLink = async (
     // 2. Use the token to create an invitation link or send an email.
 
     // For now, we'll log the intention.
-    console.log(`Generating Trustpilot invite for ${name} (${email}) with ref ${referenceId}`);
+    // console.log(`Generating Trustpilot invite for ${name} (${email}) with ref ${referenceId}`);
 
     // Mock response
     return {
@@ -33,7 +33,7 @@ export const sendTrustpilotInvite = async (
     referenceId: string
 ) => {
     // This would call the Trustpilot Invitation API
-    console.log(`Sending Trustpilot invite email to ${name} (${email})`);
+    // console.log(`Sending Trustpilot invite email to ${name} (${email})`);
 
     return {
         success: true,

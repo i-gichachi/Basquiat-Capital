@@ -11,6 +11,7 @@ export default function ContactPage() {
         interest: "Capital Market Advisory",
         message: ""
     });
+    const [submitted, setSubmitted] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setFormState({
@@ -21,29 +22,42 @@ export default function ContactPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log("Form submitted:", formState);
+
+        const recipient = "stomzy@basquiatcapital.com";
+        const subject = encodeURIComponent(
+            `New Enquiry: ${formState.interest} - ${formState.name}`
+        );
+        const body = encodeURIComponent(
+            `Name: ${formState.name}\nEmail: ${formState.email}\nArea of Interest: ${formState.interest}\n\nMessage:\n${formState.message}`
+        );
+
+        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        setSubmitted(true);
     };
 
     return (
         <main className="flex flex-col min-h-screen bg-basquiat-white text-basquiat-black pt-20">
             {/* Hero Section */}
-            <section className="relative bg-basquiat-blue text-white py-12 md:py-24 overflow-hidden">
+            <section className="relative bg-basquiat-blue text-white py-10 md:py-20 overflow-hidden">
+
                 <div className="absolute inset-0 z-0 opacity-20">
                     <div className="absolute -top-24 -right-24 w-96 h-96 bg-basquiat-gold rounded-full blur-3xl opacity-50" />
                     <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                    <div className="max-w-4xl">
+                    <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
                         <SlideLeft delay={0}>
-                            <h1 className="font-serif text-[42px] md:text-[80px] font-light mb-6 tracking-tight leading-[0.9]">
+                            <h1 className="font-serif text-[42px] md:text-[80px] font-light mb-6 tracking-tight leading-[0.9] text-center mx-auto">
                                 Let’s Start a <br />
                                 <span className="text-basquiat-gold">Conversation.</span>
                             </h1>
                         </SlideLeft>
                         <FadeUp delay={200}>
-                            <p className="font-sans text-[16px] md:text-[20px] font-light text-gray-300 max-w-2xl leading-relaxed">
+                            <p
+                                className="font-sans text-[16px] md:text-[20px] font-light text-gray-300 max-w-2xl leading-relaxed text-center mx-auto"
+                                style={{ maxWidth: '560px' }}
+                            >
                                 Connect with our team to discuss capital deployment, market advisory, or institutional partnerships.
                             </p>
                         </FadeUp>
@@ -51,7 +65,8 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            <section className="py-0 -mt-12 md:-mt-20 relative z-20 mb-12">
+            <section className="py-0 -mt-8 md:-mt-16 relative z-20 mb-12">
+
                 <div className="max-w-7xl mx-auto px-6 lg:px-12">
                     <FadeUp delay={400}>
                         <div className="bg-white shadow-2xl overflow-hidden flex flex-col md:flex-row border border-gray-100">
@@ -174,16 +189,35 @@ export default function ContactPage() {
                                         />
                                     </div>
 
-                                    <button
-                                        type="submit"
-                                        className="w-full md:w-auto px-10 py-4 border border-basquiat-blue text-basquiat-blue font-sans text-[13px] font-bold uppercase tracking-widest hover:bg-basquiat-blue hover:text-white transition-all duration-300 flex items-center justify-center gap-3 group"
-                                    >
-                                        Send Message
-                                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                    </button>
-                                    <p className="text-xs text-gray-400 font-light italic mt-4 text-center md:text-left">
-                                        We typically respond to new partner inquiries within 24 hours.
-                                    </p>
+                                    {!submitted ? (
+                                        <>
+                                            <button
+                                                type="submit"
+                                                className="w-full md:w-auto px-10 py-4 border border-basquiat-blue text-basquiat-blue font-sans text-[13px] font-bold uppercase tracking-widest hover:bg-basquiat-blue hover:text-white transition-all duration-300 flex items-center justify-center gap-3 group"
+                                            >
+                                                Send Message
+                                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                            </button>
+                                            <p className="text-xs text-gray-400 font-light italic mt-4 text-center md:text-left">
+                                                We typically respond to new partner inquiries within 24 hours.
+                                            </p>
+                                        </>
+                                    ) : (
+                                        <div className="p-6 border-l-2 border-basquiat-gold bg-basquiat-blue/5">
+                                            <p className="font-serif text-[18px] font-light text-basquiat-blue mb-2">
+                                                Your email client should have opened.
+                                            </p>
+                                            <p className="font-sans text-[13px] text-gray-500 leading-relaxed">
+                                                If it did not open, email us directly at{" "}
+                                                <a
+                                                    href="mailto:info@basquiatcapital.com"
+                                                    className="text-basquiat-blue hover:text-basquiat-gold transition-colors underline underline-offset-2"
+                                                >
+                                                    info@basquiatcapital.com
+                                                </a>
+                                            </p>
+                                        </div>
+                                    )}
                                 </form>
                             </div>
                         </div>

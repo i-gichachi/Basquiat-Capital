@@ -16,19 +16,33 @@ const config: Config = {
         },
         extend: {
             colors: {
-                basquiat: {
-                    navy: {
-                        DEFAULT: "#0B2545", // Hero bg, dark sections
-                        darker: "#060F1E",  // Stats bar, footer
-                        darkest: "#040C18", // Footer bottom strip
-                    },
-                    gold: "#F0B429",      // Accents ONLY
-                    blue: "#1B5FA8",      // Buttons, links
-                    white: "#E8E4DC",     // "Off-white" -> Text on dark backgrounds
-                    "warm-white": "#F8F7F4", // Light section backgrounds
-                    "pure-white": "#FFFFFF", // Nav background when scrolled
-                    black: "#0A0A0A",     // "Near-black" -> Text on light backgrounds
-                },
+                // Primary brand colors
+                'basquiat-navy': '#0B2545',   // Primary dark — navigation, hero, dark sections
+                'basquiat-navy-darker': '#0D2032',   // Stats bar, slightly deeper than navy
+                'basquiat-navy-deepest': '#071A33',   // Footer — grounds the page
+                'basquiat-gold': '#F0B429',   // Primary accent — CTAs, icons, highlights
+                'basquiat-gold-deep': '#D4971E',   // Gold hover state — prevents flat look
+                'basquiat-black': '#0A0A0A',   // Near-black for text
+                'basquiat-white': '#FFFFFF',   // Pure white — text on dark
+
+                // Background surfaces — light
+                'basquiat-bg-primary': '#FAFAFA',   // Main light background — replaces warm cream
+                'basquiat-bg-secondary': '#F4F4F5',   // Subtle section divider on light
+                'basquiat-bg-card': '#FFFFFF',   // Cards on light backgrounds
+
+                // Background surfaces — dark
+                'basquiat-card-dark': '#0D2E57',   // Cards on dark/navy backgrounds — creates lift
+
+                // Text
+                'basquiat-text-primary': '#0B2545',   // Headings on light
+                'basquiat-text-body': '#4B5563',   // Body copy on light — refined grey
+                'basquiat-text-muted': '#9CA3AF',   // Captions, labels on light
+
+                // Legacy aliases — keep these so other pages don't break
+                'basquiat-blue': '#0B2545',
+                'basquiat-pure-white': '#FFFFFF',
+                'basquiat-warm-white': '#FAFAFA',   // Reassigned to crisp neutral
+                'basquiat-navy-darkest': '#071A33',   // Legacy support for Footer
             },
             fontFamily: {
                 sans: ["var(--font-inter)", "sans-serif"],

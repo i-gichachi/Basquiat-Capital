@@ -1,162 +1,328 @@
-import Link from "next/link";
-import Image from "next/image";
-import { FadeUp, SlideLeft, ScaleIn, GoldLine, Cascade } from "@/components/Animate";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+"use client";
 
-export default function AboutPage() {
+import Image from "next/image";
+import { FadeUp, SlideLeft, ScaleIn, Cascade, GoldLine } from "@/components/Animate";
+
+export default function About() {
     return (
-        <main className="flex flex-col min-h-screen bg-basquiat-white text-basquiat-black pt-20">
-            {/* Hero Section */}
-            <section className="relative h-[60vh] md:h-[70vh] flex items-center justify-center overflow-hidden bg-basquiat-blue">
-                <div className="absolute inset-0 z-0 opacity-20">
+        <main className="flex flex-col min-h-screen" style={{ backgroundColor: '#FAFAFA' }}>
+
+            {/* ============================================================
+          SECTION 1 - HERO
+      ============================================================ */}
+            <section className="relative h-[70vh] min-h-[480px] md:h-[75vh] flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#0B2545' }}>
+
+                {/* Background image */}
+                <div className="absolute inset-0 z-0">
                     <Image
                         src="/images/hero_bg.jpg"
-                        alt="Background Texture"
+                        alt="Basquiat Capital"
                         fill
-                        className="object-cover object-center grayscale"
+                        className="object-cover object-center"
+                        style={{ opacity: 0.25 }}
                         priority
                     />
-                    <div className="absolute inset-0 bg-basquiat-blue mix-blend-multiply" />
+                    <div className="absolute inset-0" style={{ backgroundColor: 'rgba(11,37,69,0.75)' }} />
                 </div>
 
-                <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 text-center text-white">
-                    <SlideLeft delay={0}>
-                        <h1 className="font-serif text-[42px] md:text-[80px] font-light mb-6 tracking-tight leading-[0.9]">
-                            About <span className="text-basquiat-gold">Basquiat Capital</span>
-                        </h1>
-                    </SlideLeft>
+                {/* BC Monogram watermark */}
+                <div className="absolute -bottom-12 -right-12 pointer-events-none select-none z-0"
+                    style={{ opacity: 0.03 }}>
+                    <span className="font-serif leading-none text-white"
+                        style={{ fontSize: 'clamp(160px, 25vw, 380px)' }}>BC</span>
+                </div>
 
-                    <GoldLine delay={150} centered={true} />
+                {/* Content */}
+                <div className="relative z-10 text-center px-6 md:px-12 max-w-4xl mx-auto w-full">
+                    <GoldLine delay={200} centered={true} />
 
                     <FadeUp delay={300}>
-                        <p className="font-sans text-[16px] md:text-[20px] font-light text-gray-200 max-w-3xl mx-auto leading-relaxed mt-8">
+                        <h1 className="font-serif font-normal leading-[0.95] tracking-tight text-white mt-6"
+                            style={{ fontSize: 'clamp(40px, 8vw, 88px)' }}>
+                            About{" "}
+                            <span className="font-semibold" style={{ color: '#F0B429' }}>
+                                Basquiat Capital
+                            </span>
+                        </h1>
+                    </FadeUp>
+
+                    <FadeUp delay={500}>
+                        <p className="font-sans leading-[1.8] mt-6 max-w-xl mx-auto"
+                            style={{ fontSize: 'clamp(14px, 2vw, 17px)', color: 'rgba(255,255,255,0.6)' }}>
                             Bridging the gap between global capital and African opportunity.
                         </p>
                     </FadeUp>
                 </div>
             </section>
 
-            {/* Who We Are Section */}
-            <section className="py-12 md:py-20 bg-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-                        {/* Right Column (Mobile: Order 1) - Visual/Impact */}
-                        <div className="lg:order-2 relative">
-                            <ScaleIn delay={200}>
-                                <div className="relative h-[400px] md:h-[500px] bg-gray-100 p-8 flex items-center justify-center overflow-hidden">
-                                    {/* Decorative elements */}
-                                    <div className="absolute top-0 right-0 w-32 h-32 bg-basquiat-gold/10 rounded-bl-full" />
-                                    <div className="absolute bottom-0 left-0 w-32 h-32 bg-basquiat-blue/5 rounded-tr-full" />
+            {/* ============================================================
+          SECTION 2 - WHO WE ARE
+      ============================================================ */}
+            <section className="py-12 md:py-20" style={{ backgroundColor: '#FAFAFA' }}>
 
-                                    <div className="text-center z-10">
-                                        <h3 className="font-serif text-5xl md:text-7xl font-light text-basquiat-blue/20 tracking-widest">STRATEGY</h3>
-                                        <h3 className="font-serif text-5xl md:text-7xl font-light text-basquiat-gold/30 -mt-6 md:-mt-8 tracking-widest">EXECUTION</h3>
-                                    </div>
-                                    <div className="absolute inset-0 border-2 border-basquiat-gold/20 m-4" />
+                <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-center">
+
+                        {/* Left - Text */}
+                        <div className="order-2 lg:order-1">
+                            <SlideLeft delay={0}>
+                                <span className="font-sans block mb-4"
+                                    style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F0B429' }}>
+                                    Who We Are
+                                </span>
+                            </SlideLeft>
+
+                            <SlideLeft delay={100}>
+                                <h2 className="font-serif font-normal leading-[1.05] mb-8"
+                                    style={{ fontSize: 'clamp(32px, 5vw, 54px)', color: '#0B2545' }}>
+                                    A Bridge for Capital<br />in Emerging Markets.
+                                </h2>
+                            </SlideLeft>
+
+                            <FadeUp delay={200}>
+                                <p className="font-sans leading-[1.85] mb-5"
+                                    style={{ fontSize: '15px', color: '#374151' }}>
+                                    Basquiat Capital is a US-domiciled Limited Liability Company (LLC) with
+                                    primary operations in Nairobi, Kenya. We serve clients and partners across
+                                    East Africa, the UK, and the United States.
+                                </p>
+                            </FadeUp>
+
+                            <FadeUp delay={300}>
+                                <p className="font-sans leading-[1.85] mb-10"
+                                    style={{ fontSize: '15px', color: '#374151' }}>
+                                    Our mission is to facilitate seamless capital flow and structured financial
+                                    solutions in markets that are often overlooked but ripe with potential.
+                                </p>
+                            </FadeUp>
+
+                            {/* Our Role callout */}
+                            <FadeUp delay={400}>
+                                <div className="py-2 pl-6" style={{ borderLeft: '2px solid #F0B429' }}>
+                                    <p className="font-sans mb-3"
+                                        style={{ fontSize: '11px', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#F0B429' }}>
+                                        Our Role
+                                    </p>
+                                    <p className="font-sans leading-[1.85] italic"
+                                        style={{ fontSize: '15px', color: '#374151' }}>
+                                        <span className="font-semibold not-italic" style={{ color: '#0B2545' }}>
+                                            We are not a bank.
+                                        </span>{" "}
+                                        We are a business development consulting firm. We identify, vet, and profile
+                                        high-potential companies to provide actionable market intelligence to our
+                                        institutional partners.
+                                    </p>
+                                </div>
+                            </FadeUp>
+                        </div>
+
+                        {/* Right - Data Visual */}
+                        <div className="order-1 lg:order-2">
+                            <ScaleIn delay={150}>
+                                <div className="relative w-full overflow-hidden shadow-2xl"
+                                    style={{
+                                        aspectRatio: '4/3',
+                                        boxShadow: '0 25px 50px rgba(11,37,69,0.15)'
+                                    }}>
+                                    {/* Gold left accent bar */}
+                                    <div className="absolute left-0 top-0 bottom-0 z-10"
+                                        style={{ width: '3px', backgroundColor: '#F0B429' }} />
+                                    <Image
+                                        src="/images/data_visual.png"
+                                        alt="Strategic capital visualization"
+                                        fill
+                                        className="object-cover object-center"
+                                    />
                                 </div>
                             </ScaleIn>
                         </div>
 
-                        {/* Left Column (Mobile: Order 2) - Text Content */}
-                        <div className="lg:order-1 flex flex-col justify-center">
-                            <SlideLeft delay={0}>
-                                <span className="font-sans text-[11px] uppercase tracking-widest text-basquiat-gold mb-4 block">
-                                    Who We Are
-                                </span>
-                            </SlideLeft>
-                            <SlideLeft delay={100}>
-                                <h3 className="font-serif text-[42px] leading-tight text-basquiat-blue mb-8">
-                                    A Bridge for Capital <br className="hidden md:block" /> in Emerging Markets.
-                                </h3>
-                            </SlideLeft>
-
-                            <FadeUp delay={200}>
-                                <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed font-sans">
-                                    <p>
-                                        Basquiat Capital is a US-domiciled Limited Liability Company (LLC) with primary operations in Nairobi, Kenya. We serve clients and partners across East Africa, the UK, and the United States.
-                                    </p>
-                                    <p>
-                                        Our mission is to facilitate seamless capital flow and structured financial solutions in markets that are often overlooked but ripe with potential.
-                                    </p>
-                                </div>
-                            </FadeUp>
-
-                            <FadeUp delay={300}>
-                                <div className="mt-8 p-6 bg-basquiat-blue/5 border-l-2 border-basquiat-gold">
-                                    <h4 className="font-serif text-xl font-medium text-basquiat-blue mb-2">Our Role</h4>
-                                    <p className="text-gray-700 italic font-sans text-[15px]">
-                                        <span className="font-medium text-basquiat-blue not-italic">We are not a bank.</span> We are a business development consulting firm. We identify, vet, and profile high-potential companies to provide actionable market intelligence to our institutional partners.
-                                    </p>
-                                </div>
-                            </FadeUp>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            {/* Philosophy Section */}
-            <section className="py-12 md:py-20 bg-basquiat-blue text-white">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <div className="max-w-4xl mx-auto text-center">
+            {/* ============================================================
+          SECTION 3 - OUR PHILOSOPHY
+          Background: Dark Navy (#0B2545) -- REVERTED PER USER REQUEST
+          Cards: Dark Navy (#0D2E57) separated by gap
+      ============================================================ */}
+            <section className="py-12 md:py-20" style={{ backgroundColor: '#0B2545' }}>
+
+                <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+
+                    {/* Header */}
+                    <div className="mb-12 md:mb-14">
                         <SlideLeft delay={0}>
-                            <h2 className="font-serif text-[42px] font-light mb-8">Our Philosophy</h2>
+                            <span className="font-sans block mb-4"
+                                style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F0B429' }}>
+                                How We Operate
+                            </span>
                         </SlideLeft>
-
-                        <div className="grid md:grid-cols-2 gap-6 text-center items-stretch">
-                            {[
-                                {
-                                    title: "Strategic Partnerships",
-                                    desc: "We operate through a network of strategic partners in East and Sub-Saharan Africa's private sector, institutional relationships with global financial services firms, and on-the-ground presence across key markets."
-                                },
-                                {
-                                    title: "Deliberately Lean",
-                                    desc: "We are deliberately lean. Every person in our network is there because they add direct value to the opportunities we pursue. Efficiency and agility are at our core."
-                                }
-                            ].map((item, i) => (
-                                <Cascade key={i} index={i}>
-                                    <div className="
-                                        group relative bg-white/5 p-8 border border-white/10  
-                                        hover:bg-white/10 transition-all duration-500 overflow-hidden
-                                        flex flex-col items-center h-full
-                                    ">
-                                        {/* Gold top-border on hover */}
-                                        <div className="absolute top-0 left-0 right-0 h-[2px] bg-basquiat-gold origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-
-                                        <CheckCircle2 className="w-10 h-10 text-basquiat-gold mb-6 mx-auto opacity-80 group-hover:opacity-100 transition-opacity" />
-                                        <h3 className="font-serif text-2xl font-light mb-4">{item.title}</h3>
-                                        <p className="text-gray-300 leading-[1.8] font-sans text-[15px]">
-                                            {item.desc}
-                                        </p>
-                                    </div>
-                                </Cascade>
-                            ))}
-                        </div>
-
+                        <SlideLeft delay={100}>
+                            <h2 className="font-serif font-normal leading-tight text-white"
+                                style={{ fontSize: 'clamp(36px, 5vw, 52px)' }}>
+                                Our Philosophy
+                            </h2>
+                        </SlideLeft>
                     </div>
+
+                    {/* Philosophy Cards - Separated Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        {[
+                            {
+                                title: "Strategic Partnerships",
+                                body: "We operate through a network of strategic partners in East and Sub-Saharan Africa's private sector, institutional relationships with global financial services firms, and on-the-ground presence across key markets."
+                            },
+                            {
+                                title: "Deliberately Lean",
+                                body: "We are deliberately lean. Every person in our network is there because they add direct value to the opportunities we pursue. Efficiency and agility are at our core."
+                            }
+                        ].map((card, i) => (
+                            <Cascade key={card.title} index={i}>
+                                <div
+                                    className="group flex flex-col relative overflow-hidden transition-all duration-500"
+                                    style={{
+                                        backgroundColor: '#0D2E57',
+                                        borderTop: '2px solid rgba(240,180,41,0.3)',
+                                        padding: 'clamp(32px, 5vw, 48px)',
+                                        minHeight: 'clamp(280px, 30vw, 360px)',
+                                        boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
+                                    }}
+                                    onMouseEnter={e => {
+                                        (e.currentTarget as HTMLDivElement).style.backgroundColor = '#0F3566';
+                                        (e.currentTarget as HTMLDivElement).style.borderTopColor = '#F0B429';
+                                        (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
+                                    }}
+                                    onMouseLeave={e => {
+                                        (e.currentTarget as HTMLDivElement).style.backgroundColor = '#0D2E57';
+                                        (e.currentTarget as HTMLDivElement).style.borderTopColor = 'rgba(240,180,41,0.3)';
+                                        (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+                                    }}
+                                >
+                                    {/* Gold accent line */}
+                                    <div className="mb-8 transition-all duration-500"
+                                        style={{ width: '32px', height: '1px', backgroundColor: '#F0B429', opacity: 0.5 }} />
+
+                                    {/* Title */}
+                                    <h3 className="font-serif font-normal text-white leading-tight mb-5"
+                                        style={{ fontSize: 'clamp(22px, 3vw, 28px)' }}>
+                                        {card.title}
+                                    </h3>
+
+                                    {/* Body */}
+                                    <p className="font-sans leading-[1.9] flex-1"
+                                        style={{ fontSize: 'clamp(13px, 1.5vw, 15px)', color: 'rgba(255,255,255,0.55)' }}>
+                                        {card.body}
+                                    </p>
+                                </div>
+                            </Cascade>
+                        ))}
+                    </div>
+
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="py-12 md:py-24 bg-basquiat-white text-center">
-                <div className="max-w-7xl mx-auto px-6 lg:px-12">
-                    <SlideLeft delay={0}>
-                        <h2 className="font-serif text-[42px] md:text-[52px] font-light text-basquiat-blue mb-4">Ready to move first?</h2>
-                    </SlideLeft>
-                    <FadeUp delay={100}>
-                        <p className="font-sans text-[16px] text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                            Connect with us to explore how we can support your capital or investment objectives.
-                        </p>
-                    </FadeUp>
-                    <FadeUp delay={200}>
-                        <Link
-                            href="/contact"
-                            className="inline-flex items-center gap-3 px-8 py-4 border border-basquiat-gold text-basquiat-gold font-sans text-[13px] uppercase tracking-widest hover:bg-basquiat-gold hover:text-basquiat-black transition-all duration-300"
-                        >
-                            Contact Us <ArrowRight className="w-5 h-5" />
-                        </Link>
-                    </FadeUp>
+            {/* ============================================================
+          SECTION 4 - WHAT SETS US APART
+          Background: Dark Gray (#374151) from "Featured In" section -- CHANGED PER USER REQUEST
+          Headers: White/Gold for visibility
+          Cards: White
+      ============================================================ */}
+            <section className="py-12 md:py-20" style={{ backgroundColor: '#374151' }}>
+
+                <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+
+                    {/* Header - centered */}
+                    <div className="max-w-3xl mx-auto text-center mb-14 md:mb-16">
+                        <SlideLeft delay={0}>
+                            <span className="font-sans block mb-4"
+                                style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F0B429' }}>
+                                Our Edge
+                            </span>
+                        </SlideLeft>
+                        <FadeUp delay={100}>
+                            <h2 className="font-serif font-normal leading-tight"
+                                style={{ fontSize: 'clamp(32px, 5vw, 48px)', color: '#FFFFFF' }}>
+                                What Sets Us Apart
+                            </h2>
+                        </FadeUp>
+                        <GoldLine delay={200} centered={true} />
+                    </div>
+
+                    {/* Cards Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        {[
+                            {
+                                number: "01",
+                                title: "On-the-Ground Presence",
+                                body: "We are not advisors sitting in London. We operate in the markets we serve, Nairobi, East Africa, with direct access to the opportunities we identify."
+                            },
+                            {
+                                number: "02",
+                                title: "Institutional Rigour",
+                                body: "Every mandate we take is approached with the same diligence standards expected by global institutional investors, regardless of deal size."
+                            },
+                            {
+                                number: "03",
+                                title: "Aligned Incentives",
+                                body: "We succeed when our clients succeed. Our compensation structure is designed to keep us fully aligned with the outcomes we help create."
+                            }
+                        ].map((item, i) => (
+                            <Cascade key={item.title} index={i}>
+                                <div
+                                    className="group relative overflow-hidden transition-all duration-400"
+                                    style={{
+                                        backgroundColor: '#FFFFFF',
+                                        border: '1px solid #D1D5DB',
+                                        padding: 'clamp(24px, 4vw, 36px)',
+                                    }}
+                                    onMouseEnter={e => {
+                                        const el = e.currentTarget as HTMLDivElement;
+                                        el.style.borderColor = 'rgba(240,180,41,0.5)';
+                                        el.style.boxShadow = '0 20px 40px rgba(11,37,69,0.08)';
+                                        el.style.transform = 'translateY(-4px)';
+                                    }}
+                                    onMouseLeave={e => {
+                                        const el = e.currentTarget as HTMLDivElement;
+                                        el.style.borderColor = '#D1D5DB';
+                                        el.style.boxShadow = 'none';
+                                        el.style.transform = 'translateY(0)';
+                                    }}
+                                >
+                                    {/* Gold top sweep on hover - via pseudo via inline border-top change */}
+                                    <div className="absolute top-0 left-0 right-0 origin-left transition-transform duration-500 scale-x-0 group-hover:scale-x-100"
+                                        style={{ height: '2px', backgroundColor: '#F0B429' }} />
+
+                                    {/* Number - FIXED: strong gold color, not faded */}
+                                    <div className="font-serif leading-none mb-5"
+                                        style={{
+                                            fontSize: 'clamp(40px, 6vw, 56px)',
+                                            color: '#F0B429',
+                                            opacity: 0.4,
+                                            fontWeight: 400
+                                        }}>
+                                        {item.number}
+                                    </div>
+
+                                    {/* Title */}
+                                    <h3 className="font-serif font-normal leading-tight mb-4"
+                                        style={{ fontSize: 'clamp(17px, 2vw, 20px)', color: '#0B2545' }}>
+                                        {item.title}
+                                    </h3>
+
+                                    {/* Body */}
+                                    <p className="font-sans leading-[1.85]"
+                                        style={{ fontSize: '14px', color: '#374151' }}>
+                                        {item.body}
+                                    </p>
+                                </div>
+                            </Cascade>
+                        ))}
+                    </div>
+
                 </div>
             </section>
+
         </main>
     );
 }

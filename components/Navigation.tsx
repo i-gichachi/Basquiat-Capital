@@ -38,7 +38,7 @@ export default function Navigation() {
     const links = [
         { name: "About", href: "/about" },
         { name: "Offerings", href: "/offerings" },
-        { name: "Insights", href: "/blog" },
+        { name: "Insights", href: "/insights" },
         { name: "FAQs", href: "/faqs" },
         { name: "Contact", href: "/contact" },
     ];

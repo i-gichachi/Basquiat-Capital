@@ -28,7 +28,7 @@ export default function Footer() {
                         </p>
                         <div className="mt-6 text-basquiat-white/30 hover:text-basquiat-gold transition-colors">
                             <a
-                                href="https://linkedin.com"
+                                href="https://www.linkedin.com/in/stompy-mwendwa"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

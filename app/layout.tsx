@@ -20,8 +20,57 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-    title: "Basquiat Capital | Wealth Management & Investment",
-    description: "Professional wealth management and investment services.",
+    title: "Basquiat Capital | Institutional Investment & Capital Advisory",
+    description:
+        "US equity strategies delivering +88.96% audited returns in 2024. Capital market advisory and commercial FX solutions for companies across Sub-Saharan Africa. Wyoming-registered. Operating in Nairobi.",
+    keywords: [
+        "institutional investment Africa",
+        "capital market advisory Kenya",
+        "US equity hedge fund",
+        "commercial FX Africa",
+        "Sub-Saharan Africa investment",
+        "Basquiat Capital",
+        "emerging markets capital",
+        "Nairobi investment firm",
+    ],
+    authors: [{ name: "Basquiat Capital" }],
+    creator: "Basquiat Capital",
+    metadataBase: new URL("https://basquiatcapital.com"),
+    openGraph: {
+        type: "website",
+        locale: "en_US",
+        url: "https://basquiatcapital.com",
+        siteName: "Basquiat Capital",
+        title: "Basquiat Capital | Institutional Investment & Capital Advisory",
+        description:
+            "US equity strategies delivering +88.96% audited returns in 2024. Capital market advisory and commercial FX for Sub-Saharan Africa.",
+        images: [
+            {
+                url: "/images/hero_bg.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Basquiat Capital - Institutional Investment",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Basquiat Capital | Institutional Investment & Capital Advisory",
+        description:
+            "US equity strategies delivering +88.96% audited returns in 2024. Capital market advisory and commercial FX for Sub-Saharan Africa.",
+        images: ["/images/hero_bg.jpg"],
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
+    },
 };
 
 export default function RootLayout({
@@ -32,8 +81,8 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
             <body className="font-sans antialiased bg-basquiat-white text-basquiat-black selection:bg-basquiat-gold selection:text-basquiat-navy">
-                <Navigation />
                 <DisclaimerModal />
+                <Navigation />
                 <main className="min-h-screen">
                     {children}
                 </main>
