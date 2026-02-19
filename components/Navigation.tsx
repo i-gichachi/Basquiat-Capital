@@ -47,9 +47,11 @@ export default function Navigation() {
         <nav
             className={cn(
                 "fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-out",
-                scrolled
+                scrolled && !isOpen
                     ? "bg-basquiat-pure-white border-b border-[#F0F0F0] py-4 shadow-sm"
-                    : "bg-white/75 backdrop-blur-md py-6"
+                    : isOpen
+                        ? "bg-transparent py-4"
+                        : "bg-white/75 backdrop-blur-md py-6"
             )}
         >
             <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
@@ -57,7 +59,7 @@ export default function Navigation() {
                     <Link href="/" className="flex items-center group relative z-50">
                         {/* Logo Pill for visibility on dark backgrounds if generic logo - utilizing specific instructions */}
                         <div className={cn(
-                            "relative h-10 w-32 md:h-12 md:w-44 transition-all duration-300",
+                            "relative h-10 w-32 md:h-12 md:w-44 transition-all duration-300 pointer-events-none",
                             // Removed the pill background for a cleaner look
                         )}>
                             <Image
@@ -66,8 +68,7 @@ export default function Navigation() {
                                 fill
                                 className={cn(
                                     "object-contain transition-all duration-300",
-                                    // Navbar is consistently light (white or white/75), so standard multiply blend works best
-                                    "mix-blend-multiply contrast-125"
+                                    isOpen ? "invert mix-blend-screen" : "mix-blend-multiply contrast-125"
                                 )}
                                 priority
                             />
@@ -122,54 +123,56 @@ export default function Navigation() {
                         )}
                     </button>
                 </div>
-            </div>
+            </div >
 
             {/* Mobile Menu Overlay */}
             <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="fixed inset-0 bg-basquiat-navy/95 z-40 flex flex-col items-center justify-center"
-                    >
-                        <div className="flex flex-col items-center space-y-8">
-                            {links.map((link, i) => (
+                {
+                    isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 bg-basquiat-navy/95 z-40 flex flex-col items-center justify-center"
+                        >
+                            <div className="flex flex-col items-center space-y-6">
+                                {links.map((link, i) => (
+                                    <motion.div
+                                        key={link.name}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: i * 0.15, duration: 0.5 }} // Staggered delay 150ms
+                                    >
+                                        <Link
+                                            href={link.href}
+                                            className="text-3xl font-serif font-light text-basquiat-white hover:text-basquiat-gold transition-colors"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            {link.name}
+                                        </Link>
+                                    </motion.div>
+                                ))}
+
                                 <motion.div
-                                    key={link.name}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: i * 0.15, duration: 0.5 }} // Staggered delay 150ms
+                                    transition={{ delay: links.length * 0.15 + 0.1 }}
+                                    className="pt-8"
                                 >
                                     <Link
-                                        href={link.href}
-                                        className="text-4xl font-serif font-light text-basquiat-white hover:text-basquiat-gold transition-colors"
+                                        href="/contact"
+                                        className="px-6 py-3 border border-basquiat-gold text-basquiat-gold text-xs uppercase tracking-widest hover:bg-basquiat-gold hover:text-basquiat-black transition-colors"
                                         onClick={() => setIsOpen(false)}
                                     >
-                                        {link.name}
+                                        Request a Meeting
                                     </Link>
                                 </motion.div>
-                            ))}
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: links.length * 0.15 + 0.1 }}
-                                className="pt-8"
-                            >
-                                <Link
-                                    href="/contact"
-                                    className="px-8 py-4 border border-basquiat-gold text-basquiat-gold text-sm uppercase tracking-widest hover:bg-basquiat-gold hover:text-basquiat-black transition-colors"
-                                    onClick={() => setIsOpen(false)}
-                                >
-                                    Request a Meeting
-                                </Link>
-                            </motion.div>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </nav>
+                            </div>
+                        </motion.div>
+                    )
+                }
+            </AnimatePresence >
+        </nav >
     );
 }
