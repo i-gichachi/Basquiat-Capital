@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import DisclaimerModal from "@/components/DisclaimerModal";
 import BackToTop from "@/components/BackToTop";
+import Script from "next/script";
 
 // [MODIFIED] Configure fonts
 const inter = Inter({
@@ -80,10 +81,21 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
+            <head>
+                <Script
+                    src="https://assets.calendly.com/assets/external/widget.js"
+                    strategy="lazyOnload"
+                />
+                <Script
+                    type="text/javascript"
+                    src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js"
+                    strategy="afterInteractive"
+                />
+            </head>
             <body className="font-sans antialiased bg-basquiat-white text-basquiat-black selection:bg-basquiat-gold selection:text-basquiat-navy">
                 <DisclaimerModal />
                 <Navigation />
-                <main className="min-h-screen">
+                <main className="min-h-screen pt-[80px]">
                     {children}
                 </main>
                 <Footer />

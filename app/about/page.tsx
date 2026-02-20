@@ -10,7 +10,7 @@ export default function About() {
             {/* ============================================================
           SECTION 1 - HERO
       ============================================================ */}
-            <section className="relative h-[70vh] min-h-[480px] md:h-[75vh] flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#0B2545' }}>
+            <section className="relative flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#0B2545', minHeight: 'clamp(400px, 55vh, 520px)' }}>
 
                 {/* Background image */}
                 <div className="absolute inset-0 z-0">
@@ -320,6 +320,100 @@ export default function About() {
                         ))}
                     </div>
 
+                </div>
+            </section>
+
+            {/* ============================================================
+          SECTION 5 - FOUNDER
+      ============================================================ */}
+            <section className="py-12 md:py-20" style={{ backgroundColor: '#FAFAFA' }}>
+
+                <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-start">
+
+                        {/* Left - Portrait */}
+                        <div className="order-1">
+                            <ScaleIn delay={150}>
+                                <div className="relative w-full overflow-hidden shadow-2xl"
+                                    style={{
+                                        aspectRatio: '3/4',
+                                        boxShadow: '0 25px 50px rgba(11,37,69,0.15)',
+                                        maxHeight: '600px'
+                                    }}>
+                                    {/* Gold left accent bar */}
+                                    <div className="absolute left-0 top-0 bottom-0 z-10"
+                                        style={{ width: '3px', backgroundColor: '#F0B429' }} />
+                                    <Image
+                                        src="/images/stompy-portrait.jpg"
+                                        alt="Stompy Mwendwa — Founder & CIO, Basquiat Capital"
+                                        fill
+                                        className="object-cover"
+                                        style={{ objectPosition: 'top center' }}
+                                    />
+                                </div>
+                            </ScaleIn>
+                        </div>
+
+                        {/* Right - Bio */}
+                        <div className="order-2">
+                            <SlideLeft delay={0}>
+                                <span className="font-sans block mb-4"
+                                    style={{ fontSize: '11px', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F0B429' }}>
+                                    The Founder
+                                </span>
+                            </SlideLeft>
+
+                            <SlideLeft delay={100}>
+                                <h2 className="font-serif font-normal leading-tight mb-2"
+                                    style={{ fontSize: 'clamp(28px, 4vw, 42px)', color: '#0B2545' }}>
+                                    Stompy &ldquo;Stomzy&rdquo; Mwendwa
+                                </h2>
+                            </SlideLeft>
+
+                            <FadeUp delay={150}>
+                                <p className="font-sans mb-8"
+                                    style={{ fontSize: '13px', letterSpacing: '0.05em', textTransform: 'uppercase', color: '#F0B429' }}>
+                                    Founder &amp; Chief Investment Officer, Basquiat Capital LLC
+                                </p>
+                            </FadeUp>
+
+                            <FadeUp delay={200}>
+                                <p className="font-sans leading-[1.85] mb-5"
+                                    style={{ fontSize: '15px', color: '#374151' }}>
+                                    Stompy &ldquo;Stomzy&rdquo; Mwendwa is the Founder and Chief Investment Officer of Basquiat Capital LLC, a research-driven investment firm focused on U.S. public equities, institutional-grade FX and private equity mandates across emerging and frontier markets.
+                                </p>
+                            </FadeUp>
+
+                            <FadeUp delay={250}>
+                                <p className="font-sans leading-[1.85] mb-5"
+                                    style={{ fontSize: '15px', color: '#374151' }}>
+                                    Under his leadership, Basquiat Capital is evolving from a high-performance public markets platform into a multi-strategy investment business, adding commercial FX market development and a private equity practice that targets tickets of no less than $10 million per transaction.
+                                </p>
+                            </FadeUp>
+
+                            <FadeUp delay={300}>
+                                <p className="font-sans leading-[1.85] mb-5"
+                                    style={{ fontSize: '15px', color: '#374151' }}>
+                                    His investment approach combines fundamental analysis, AI-automated screening, and a proprietary GARP framework, enabling Basquiat Capital to originate and structure opportunities for insurers, corporates, and high-net-worth clients seeking differentiated dollar-denominated returns.
+                                </p>
+                            </FadeUp>
+
+                            <FadeUp delay={350}>
+                                <p className="font-sans leading-[1.85] mb-5"
+                                    style={{ fontSize: '15px', color: '#374151' }}>
+                                    Beyond portfolio construction, he is active in capital markets and corporate advisory across the United States and Sub-Saharan Africa, structuring cross-border equity and FX solutions and building strategic partnerships with insurers, telecoms, and international brokers.
+                                </p>
+                            </FadeUp>
+
+                            <FadeUp delay={400}>
+                                <p className="font-sans leading-[1.85]"
+                                    style={{ fontSize: '15px', color: '#374151' }}>
+                                    Stomzy is also a long-standing investment educator, having grown Basquiat&apos;s research membership and education franchises into on-ramps that convert sophisticated retail and corporate audiences into institutional relationships and deal flow.
+                                </p>
+                            </FadeUp>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 

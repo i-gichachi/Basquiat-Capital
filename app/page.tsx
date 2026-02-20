@@ -1,13 +1,90 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, TrendingUp, Globe, Briefcase, Star, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FadeUp, SlideLeft, ScaleIn, Cascade, GoldLine } from "@/components/Animate";
 
+// ─── Framer Motion Variants ──────────────────────────────────────────────────
+
+/** Fade up — general hero text elements */
+const fadeUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: (delay: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.7,
+            delay,
+            ease: [0.25, 0.1, 0.25, 1] as const,
+        },
+    }),
+};
+
+/** Fade in only — buttons wrapper */
+const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: (delay: number) => ({
+        opacity: 1,
+        transition: {
+            duration: 0.9,
+            delay,
+            ease: "easeOut" as const,
+        },
+    }),
+};
+
+/** Gold line draw — scaleX left→right */
+const goldLineDraw = {
+    hidden: { scaleX: 0, originX: 0 },
+    visible: {
+        scaleX: 1,
+        transition: {
+            duration: 0.6,
+            delay: 0.7,
+            ease: [0.25, 0.1, 0.25, 1] as const,
+        },
+    },
+};
+
+/** Hero image — subtle zoom + fade */
+const imageZoom = {
+    hidden: { opacity: 0, scale: 1.04 },
+    visible: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            opacity: { duration: 0.9, delay: 0.3, ease: "easeOut" as const },
+            scale: { duration: 1.8, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] as const },
+        },
+    },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+
 export default function Home() {
+
+    // Stats strip — fires once when 30 % of strip enters viewport
+    const [statsVisible, setStatsVisible] = useState(false);
+    const statsRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setStatsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.3 }
+        );
+        if (statsRef.current) observer.observe(statsRef.current);
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <main className="flex flex-col min-h-screen bg-[#FAFAFA] selection:bg-basquiat-gold selection:text-basquiat-navy">
 
@@ -28,46 +105,93 @@ export default function Home() {
                     {/* Left Column */}
                     <div className="w-full lg:w-[55%] flex flex-col justify-center h-full relative z-20 pb-12 lg:pb-0">
 
-                        <GoldLine delay={200} centered={false} />
+                        {/* Gold eyebrow label */}
+                        <motion.span
+                            variants={fadeUp}
+                            initial="hidden"
+                            animate="visible"
+                            custom={0.5}
+                            className="font-sans text-[11px] uppercase tracking-[0.2em] text-basquiat-gold mb-5 block"
+                        >
+                            Institutional-grade investment &amp; advisory
+                        </motion.span>
 
+                        {/* Gold divider line */}
+                        <motion.div
+                            variants={goldLineDraw}
+                            initial="hidden"
+                            animate="visible"
+                            className="w-16 h-px bg-basquiat-gold mb-8"
+                        />
+
+                        {/* Heading */}
                         <div className="font-serif text-[42px] md:text-[80px] lg:text-[88px] leading-[0.9] tracking-tight mb-2">
-                            <FadeUp delay={300}>
-                                <span className="text-white font-normal block">Capital Moves.</span>
-                            </FadeUp>
-                            <FadeUp delay={450}>
-                                <span className="text-basquiat-gold font-semibold block">We Move First.</span>
-                            </FadeUp>
+                            <motion.span
+                                variants={fadeUp}
+                                initial="hidden"
+                                animate="visible"
+                                custom={0.9}
+                                style={{ display: "block" }}
+                                className="text-white font-normal"
+                            >
+                                Capital Moves.
+                            </motion.span>
+                            <motion.span
+                                variants={fadeUp}
+                                initial="hidden"
+                                animate="visible"
+                                custom={1.1}
+                                style={{ display: "block" }}
+                                className="text-basquiat-gold font-semibold"
+                            >
+                                We Move First.
+                            </motion.span>
                         </div>
 
-                        <FadeUp delay={600}>
-                            <div className="h-8" />
-                            <p className="font-sans text-[16px] md:text-[17px] text-white/65 max-w-md leading-[1.8]">
-                                Institutional-grade investment & advisory for the African market. We bridge the gap between global capital and local opportunity.
-                            </p>
-                        </FadeUp>
+                        {/* Spacer + Subtitle */}
+                        <div className="h-8" />
+                        <motion.p
+                            variants={fadeUp}
+                            initial="hidden"
+                            animate="visible"
+                            custom={1.3}
+                            className="font-sans text-[16px] md:text-[17px] text-white/65 max-w-md leading-[1.8]"
+                        >
+                            Institutional-grade investment &amp; advisory for the African market. We bridge the gap between global capital and local opportunity.
+                        </motion.p>
 
-                        <FadeUp delay={750}>
-                            <div className="h-10" />
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <Link
-                                    href="/contact"
-                                    className="px-8 py-4 bg-basquiat-gold text-basquiat-navy font-sans text-[13px] uppercase tracking-widest font-semibold hover:bg-basquiat-gold-deep transition-colors duration-300 flex items-center justify-center gap-2 shadow-lg shadow-basquiat-gold/20"
-                                >
-                                    Request a Meeting <ArrowRight size={15} />
-                                </Link>
-                                <Link
-                                    href="/about"
-                                    className="px-8 py-4 border-2 border-white/20 text-white font-sans text-[13px] uppercase tracking-widest font-medium hover:border-basquiat-gold hover:text-basquiat-gold transition-all duration-300 flex items-center justify-center"
-                                >
-                                    About Us
-                                </Link>
-                            </div>
-                        </FadeUp>
+                        {/* CTA buttons */}
+                        <div className="h-10" />
+                        <motion.div
+                            variants={fadeIn}
+                            initial="hidden"
+                            animate="visible"
+                            custom={1.5}
+                            className="flex flex-col sm:flex-row gap-4"
+                        >
+                            <Link
+                                href="/contact"
+                                className="px-8 py-4 bg-basquiat-gold text-basquiat-navy font-sans text-[13px] uppercase tracking-widest font-semibold hover:bg-basquiat-gold-deep transition-colors duration-300 flex items-center justify-center gap-2 shadow-lg shadow-basquiat-gold/20"
+                            >
+                                Request a Meeting <ArrowRight size={15} />
+                            </Link>
+                            <Link
+                                href="/about"
+                                className="px-8 py-4 border-2 border-white/20 text-white font-sans text-[13px] uppercase tracking-widest font-medium hover:border-basquiat-gold hover:text-basquiat-gold transition-all duration-300 flex items-center justify-center"
+                            >
+                                About Us
+                            </Link>
+                        </motion.div>
                     </div>
 
                     {/* Right Column - Wall Street Architecture */}
                     <div className="w-full lg:w-[48%] h-[300px] lg:h-full lg:absolute lg:right-0 lg:top-0 order-first lg:order-last relative">
-                        <ScaleIn delay={200} className="w-full h-full relative">
+                        <motion.div
+                            variants={imageZoom}
+                            initial="hidden"
+                            animate="visible"
+                            className="w-full h-full relative"
+                        >
                             <Image
                                 src="/images/wall_st.png"
                                 alt="Global Capital Markets"
@@ -81,7 +205,7 @@ export default function Home() {
                             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-basquiat-gold/5" />
                             {/* Bottom fade */}
                             <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-basquiat-navy to-transparent" />
-                        </ScaleIn>
+                        </motion.div>
                     </div>
 
                 </div>
@@ -93,30 +217,38 @@ export default function Home() {
             <section className="bg-basquiat-navy-darker border-y border-basquiat-gold/15 py-10 md:py-14 text-white relative z-20">
 
                 <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-basquiat-gold/10 mb-8">
-                        {[
-                            { value: "+88.96%", label: "2024 Return", sub: "Audited & Verifiable" },
-                            { value: "+67.2%", label: "2025 Return", sub: "Non-audited" },
-                            { value: "Long-Only", label: "Structure", sub: "No leverage" },
-                            { value: "US Equities", label: "Strategy Focus", sub: "Small & Large Cap" },
-                        ].map((stat, i) => (
-                            <div key={i} className="flex flex-col items-center justify-center px-6 py-8 text-center">
-                                <div className="font-serif text-[32px] md:text-[48px] font-normal leading-none text-basquiat-gold">
-                                    {stat.value}
+                    <motion.div
+                        ref={statsRef}
+                        variants={fadeUp}
+                        initial="hidden"
+                        animate={statsVisible ? "visible" : "hidden"}
+                        custom={0}
+                    >
+                        <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-basquiat-gold/10 mb-8">
+                            {[
+                                { value: "+88.96%", label: "2024 Return", sub: "Audited & Verifiable" },
+                                { value: "+67.2%", label: "2025 Return", sub: "Non-audited" },
+                                { value: "Long-Only", label: "Structure", sub: "No leverage" },
+                                { value: "US Equities", label: "Strategy Focus", sub: "Small & Large Cap" },
+                            ].map((stat, i) => (
+                                <div key={i} className="flex flex-col items-center justify-center px-6 py-8 text-center">
+                                    <div className="font-serif text-[32px] md:text-[48px] font-normal leading-none text-basquiat-gold">
+                                        {stat.value}
+                                    </div>
+                                    <div className="mt-2 text-[11px] font-sans uppercase tracking-[0.18em] text-white/60">
+                                        {stat.label}
+                                    </div>
+                                    <div className="mt-1 text-[10px] font-sans text-white/30">
+                                        {stat.sub}
+                                    </div>
                                 </div>
-                                <div className="mt-2 text-[11px] font-sans uppercase tracking-[0.18em] text-white/60">
-                                    {stat.label}
-                                </div>
-                                <div className="mt-1 text-[10px] font-sans text-white/30">
-                                    {stat.sub}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <p className="text-center text-[10px] font-sans text-white/20 max-w-2xl mx-auto leading-relaxed border-t border-basquiat-gold/10 pt-6">
-                        Past performance is not indicative of future results. 2024 figure independently verifiable.
-                        2025 figure non-audited. All investments involve risk including possible loss of principal.
-                    </p>
+                            ))}
+                        </div>
+                        <p className="text-center text-[10px] font-sans text-white/20 max-w-2xl mx-auto leading-relaxed border-t border-basquiat-gold/10 pt-6">
+                            Past performance is not indicative of future results. 2024 figure independently verifiable.
+                            2025 figure non-audited. All investments involve risk including possible loss of principal.
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
@@ -159,7 +291,7 @@ export default function Home() {
                         </SlideLeft>
                         <SlideLeft delay={100}>
                             <h2 className="font-serif text-[40px] md:text-[56px] font-normal text-white mb-6 leading-tight">
-                                Strategic Offerings
+                                Strategic Mandates
                             </h2>
                         </SlideLeft>
                         <FadeUp delay={200}>
@@ -276,7 +408,7 @@ export default function Home() {
                         <div>
                             <SlideLeft delay={0}>
                                 <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-basquiat-gold mb-4 block">
-                                    Network & Partnerships
+                                    Network &amp; Partnerships
                                 </span>
                             </SlideLeft>
                             <SlideLeft delay={100}>
@@ -322,30 +454,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ============================================================
-          SECTION 6 - FEATURED IN
-      ============================================================ */}
-            <section className="bg-[#374151] border-t border-basquiat-gold/15 py-10 md:py-14">
 
-                <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
-                    <div className="text-center">
-                        <FadeUp delay={0}>
-                            <p className="font-sans text-[10px] uppercase tracking-[0.25em] text-white/60 mb-8">
-                                Featured In
-                            </p>
-                        </FadeUp>
-                        <div className="flex flex-wrap justify-center md:justify-evenly gap-8 md:gap-0 max-w-3xl mx-auto">
-                            {['Bloomberg', 'Reuters', 'Forbes', 'CNBC'].map((brand, i) => (
-                                <Cascade key={brand} index={i}>
-                                    <span className="font-serif text-[26px] text-white/40 hover:text-white transition-colors duration-300 cursor-default tracking-tight">
-                                        {brand}
-                                    </span>
-                                </Cascade>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             {/* ============================================================
           SECTION 7 - SOCIAL PROOF
@@ -377,24 +486,30 @@ export default function Home() {
                             </FadeUp>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {[
+                                {
+                                    quote: "Nearly two months in, I'm already seeing steady growth and encouraging results. I'm really glad I trusted them with my investment journey, and I'm excited to see what we'll achieve together.",
+                                    author: "Mercy Evelyne",
+                                    location: "Verified Client · Kenya",
+                                    stars: 5
+                                },
+                                {
+                                    quote: "I had an excellent experience working with Stomzy of Basquiat Capital. Step by step guidance, explained everything in a clear and simple way. Very professional, patient and trustworthy.",
+                                    author: "Brian Maina",
+                                    location: "Verified Client · Kenya",
+                                    stars: 5
+                                },
                                 {
                                     quote: "Their thoroughly researched analysis and recommendations have helped me optimize my portfolio and achieve impressive alpha returns in just a few weeks. A valuable resource for anyone seeking expert guidance.",
                                     author: "James Gitari",
-                                    location: "Verified Client - Trustpilot",
+                                    location: "Verified Client · UAE",
                                     stars: 5
                                 },
                                 {
-                                    quote: "Basquiat Capital provides the institutional rigor we needed to deploy our surplus free cash flow into US markets without sacrificing liquidity.",
-                                    author: "Corporate Client",
-                                    location: "East Africa",
-                                    stars: 5
-                                },
-                                {
-                                    quote: "Professional, responsive, and results-driven. The team demonstrated deep knowledge of both African markets and global capital flows. I have already referred two colleagues.",
-                                    author: "Verified Client",
-                                    location: "Institutional Partner",
+                                    quote: "Portfolio management, Great. Portfolio balancing, Great. Stocks to buy, Great. Great communication and easy to access. Investment game changer.",
+                                    author: "Anthony Macharia",
+                                    location: "Verified Client · Kenya",
                                     stars: 5
                                 }
                             ].map((review, i) => (
@@ -414,7 +529,7 @@ export default function Home() {
 
                                         {/* Quote */}
                                         <p className="font-serif text-[16px] font-light text-basquiat-navy leading-[1.8] flex-1 italic">
-                                            "{review.quote}"
+                                            &ldquo;{review.quote}&rdquo;
                                         </p>
 
                                         {/* Attribution */}
@@ -449,52 +564,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ============================================================
-          SECTION 8 - MARKET INSIGHTS CTA
-      ============================================================ */}
-            <section className="bg-basquiat-navy border-t-2 border-basquiat-gold py-12 pb-20 md:py-20 relative overflow-hidden">
 
-                {/* Decorative number */}
-                <span className="absolute -bottom-16 -right-8 font-serif text-[180px] text-basquiat-gold/4 leading-none select-none pointer-events-none">
-                    01
-                </span>
-
-                <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 relative z-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-                        <div>
-                            <SlideLeft delay={0}>
-                                <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-basquiat-gold mb-4 block">
-                                    Market Intelligence
-                                </span>
-                            </SlideLeft>
-                            <SlideLeft delay={100}>
-                                <h2 className="font-serif text-[40px] md:text-[56px] font-normal text-white mb-6 leading-tight">
-                                    Market Insights
-                                </h2>
-                            </SlideLeft>
-                            <FadeUp delay={200}>
-                                <p className="font-sans text-[15px] text-white/50 max-w-sm leading-[1.85]">
-                                    Want to stay informed on the latest market trends and strategies? Visit our blog for expert advice and actionable tips.
-                                </p>
-                            </FadeUp>
-                        </div>
-
-                        <div className="text-center md:text-right">
-                            <FadeUp delay={350}>
-                                <Link
-                                    href="/insights"
-                                    className="inline-block px-10 py-[18px] border-2 border-basquiat-gold/60 text-basquiat-gold font-sans text-[13px] uppercase tracking-widest hover:bg-basquiat-gold hover:text-basquiat-navy hover:border-basquiat-gold transition-all duration-300 mb-6"
-                                >
-                                    Read Our Insights →
-                                </Link>
-                                <p className="font-sans text-[13px] italic text-white/30">
-                                    Expert analysis of Sub-Saharan Africa's evolving markets.
-                                </p>
-                            </FadeUp>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
         </main>
     );

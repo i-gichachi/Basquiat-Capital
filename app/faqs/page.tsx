@@ -241,8 +241,7 @@ export default function FAQs() {
                 className="relative flex items-center justify-center overflow-hidden"
                 style={{
                     backgroundColor: '#0B2545',
-                    height: 'clamp(400px, 60vh, 580px)',
-                    minHeight: '400px'
+                    minHeight: 'clamp(400px, 55vh, 520px)',
                 }}
             >
                 {/* Subtle grid pattern */}

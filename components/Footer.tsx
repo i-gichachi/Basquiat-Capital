@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Linkedin } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -17,24 +16,15 @@ export default function Footer() {
                     <div className="flex flex-col items-center md:items-start text-center md:text-left">
                         <Link href="/" className="relative h-12 w-40 block">
                             <Image
-                                src="/logo.png"
+                                src="/images/logo-color-light.png"
                                 alt="Basquiat Capital"
                                 fill
-                                className="object-contain object-center md:object-left filter invert grayscale contrast-200 mix-blend-screen opacity-90"
+                                style={{ objectFit: 'contain', objectPosition: 'left center' }}
                             />
                         </Link>
                         <p className="font-serif italic text-[17px] text-basquiat-white/40 mt-4 leading-relaxed">
                             Capital Moves. We Move First.
                         </p>
-                        <div className="mt-6 text-basquiat-white/30 hover:text-basquiat-gold transition-colors">
-                            <a
-                                href="https://www.linkedin.com/in/stompy-mwendwa"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <Linkedin size={20} strokeWidth={1.5} />
-                            </a>
-                        </div>
                     </div>
 
                     {/* Column 2: Navigation */}
@@ -43,13 +33,13 @@ export default function Footer() {
                             Navigation
                         </h4>
                         <div className="flex flex-col gap-3">
-                            {['About', 'Offerings', 'Insights', 'FAQs', 'Contact'].map((item) => (
+                            {['About', 'Mandates', 'FAQs', 'Contact'].map((item) => (
                                 <Link
                                     key={item}
-                                    href={item === "Offerings" ? "/offerings" : `/${item.toLowerCase()}`}
+                                    href={item === "Mandates" ? "/offerings" : `/${item.toLowerCase()}`}
                                     className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors"
                                 >
-                                    {item === "Insights" ? "Insights (Blog)" : item}
+                                    {item}
                                 </Link>
                             ))}
                         </div>
@@ -71,7 +61,6 @@ export default function Footer() {
 
             {/* Lower Footer */}
             <div className="bg-basquiat-navy-darkest border-t border-white/5 py-8 px-6 md:px-24">
-                {/* Legal Text Removed per request */}
 
                 <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
                     <p className="font-sans text-[11px] text-basquiat-white/25">

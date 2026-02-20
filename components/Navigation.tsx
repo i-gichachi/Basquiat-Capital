@@ -37,8 +37,9 @@ export default function Navigation() {
 
     const links = [
         { name: "About", href: "/about" },
-        { name: "Offerings", href: "/offerings" },
-        { name: "Insights", href: "/insights" },
+        { name: "Founder", href: "/founder" },
+        { name: "Process", href: "/process" },
+        { name: "Mandates", href: "/offerings" },
         { name: "FAQs", href: "/faqs" },
         { name: "Contact", href: "/contact" },
     ];
@@ -63,13 +64,14 @@ export default function Navigation() {
                             // Removed the pill background for a cleaner look
                         )}>
                             <Image
-                                src="/logo.png"
+                                src="/images/logo-color.png"
                                 alt="Basquiat Capital"
                                 fill
                                 className={cn(
-                                    "object-contain transition-all duration-300",
-                                    isOpen ? "invert mix-blend-screen" : "mix-blend-multiply contrast-125"
+                                    "transition-all duration-300",
+                                    isOpen ? "invert" : ""
                                 )}
+                                style={{ objectFit: 'contain' }}
                                 priority
                             />
                         </div>

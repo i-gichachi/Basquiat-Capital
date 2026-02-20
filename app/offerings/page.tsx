@@ -17,8 +17,7 @@ export default function Offerings() {
                 className="relative flex items-center justify-center overflow-hidden"
                 style={{
                     backgroundColor: '#0B2545',
-                    height: 'clamp(420px, 70vh, 700px)',
-                    minHeight: '420px'
+                    minHeight: 'clamp(400px, 55vh, 520px)',
                 }}
             >
                 {/* Background image */}
