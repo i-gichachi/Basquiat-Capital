@@ -523,7 +523,7 @@ export default function Home() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {[
                                 {
-                                    quote: "Nearly two months in, I'm already seeing steady growth and encouraging results. I'm really glad I trusted them with my investment journey, and I'm excited to see what we'll achieve together.",
+                                    quote: "Nearly two months in, I'm already seeing steady growth and encouraging results. I'm really glad I trusted them with my mandate, and I'm excited to see what we'll achieve together.",
                                     author: "Mercy Evelyne",
                                     location: "Verified Client · Kenya",
                                     stars: 5

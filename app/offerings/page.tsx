@@ -69,7 +69,7 @@ export default function Offerings() {
                                 color: 'rgba(255,255,255,0.60)'
                             }}
                         >
-                            Tailored solutions for growth, capital efficiency, and wealth preservation.
+                            Tailored solutions for growth, capital efficiency, and capital preservation.
                         </p>
                     </FadeUp>
                 </div>

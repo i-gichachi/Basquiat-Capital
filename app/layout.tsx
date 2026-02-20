@@ -23,16 +23,16 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
     title: "Basquiat Capital | Institutional Investment & Capital Advisory",
     description:
-        "US equity strategies delivering +88.96% audited returns in 2024. Capital market advisory and commercial FX solutions for companies across Sub-Saharan Africa. Wyoming-registered. Operating in Nairobi.",
+        "Basquiat Capital is a research-driven institutional investment firm. Alpha-focused hedge fund, commercial FX, and capital market advisory across Sub-Saharan Africa and global markets.",
     keywords: [
-        "institutional investment Africa",
-        "capital market advisory Kenya",
-        "US equity hedge fund",
-        "commercial FX Africa",
-        "Sub-Saharan Africa investment",
+        "institutional investment",
+        "hedge fund",
+        "capital advisory",
+        "commercial FX",
+        "Sub-Saharan Africa",
+        "East Africa",
+        "institutional capital",
         "Basquiat Capital",
-        "emerging markets capital",
-        "Nairobi investment firm",
     ],
     authors: [{ name: "Basquiat Capital" }],
     creator: "Basquiat Capital",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         siteName: "Basquiat Capital",
         title: "Basquiat Capital | Institutional Investment & Capital Advisory",
         description:
-            "US equity strategies delivering +88.96% audited returns in 2024. Capital market advisory and commercial FX for Sub-Saharan Africa.",
+            "Research-driven institutional investment firm. Alpha-focused hedge fund, commercial FX, and capital market advisory.",
         images: [
             {
                 url: "/images/hero_bg.jpg",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Basquiat Capital | Institutional Investment & Capital Advisory",
         description:
-            "US equity strategies delivering +88.96% audited returns in 2024. Capital market advisory and commercial FX for Sub-Saharan Africa.",
+            "Research-driven institutional investment firm operating across Sub-Saharan Africa and global markets.",
         images: ["/images/hero_bg.jpg"],
     },
     robots: {
