@@ -154,7 +154,7 @@ export default function ProcessPage() {
                                         style={{
                                             fontSize: "clamp(48px, 8vw, 96px)",
                                             color: "#0B2545",
-                                            opacity: 0.08,
+                                            opacity: 0.35,
                                         }}
                                     >
                                         {step.number}

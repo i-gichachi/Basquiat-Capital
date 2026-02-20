@@ -401,7 +401,7 @@ export default function Home() {
             {/* ============================================================
           SECTION 5 - OUR NETWORK
       ============================================================ */}
-            <section className="bg-basquiat-navy py-12 md:py-20">
+            <section className="py-12 md:py-20" style={{ backgroundColor: '#374151' }}>
 
                 <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 items-center">
@@ -446,26 +446,9 @@ export default function Home() {
                             <FadeUp delay={300}>
                                 <Link
                                     href="/founder"
-                                    className="inline-flex items-center gap-3 font-sans transition-all duration-300"
-                                    style={{
-                                        fontSize: '11px',
-                                        letterSpacing: '0.18em',
-                                        textTransform: 'uppercase',
-                                        color: 'white',
-                                        textDecoration: 'none',
-                                        borderBottom: '1px solid rgba(255,255,255,0.3)',
-                                        paddingBottom: '4px'
-                                    }}
-                                    onMouseEnter={e => {
-                                        (e.currentTarget as HTMLAnchorElement).style.color = '#F0B429';
-                                        (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = '#F0B429';
-                                    }}
-                                    onMouseLeave={e => {
-                                        (e.currentTarget as HTMLAnchorElement).style.color = 'white';
-                                        (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'rgba(255,255,255,0.3)';
-                                    }}
+                                    className="group inline-flex items-center justify-center gap-3 font-sans transition-all duration-300 px-6 py-4 border border-basquiat-gold/50 text-basquiat-gold hover:bg-basquiat-gold hover:text-basquiat-navy hover:border-basquiat-gold w-full sm:w-auto text-[11px] md:text-[12px] uppercase tracking-[0.18em] font-semibold mt-4"
                                 >
-                                    Meet the Founder &amp; Our Network →
+                                    Meet the Founder &amp; Our Network <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
                                 </Link>
                             </FadeUp>
                         </div>
