@@ -5,10 +5,10 @@ import Link from "next/link";
 import { FadeUp, SlideLeft, ScaleIn, Cascade } from "@/components/Animate";
 import { ArrowRight } from "lucide-react";
 
-// Mobile: portrait switches from 3:4 → 16:9
+// Mobile: keep portrait aspect ratio (no override)
 const mobilePhotoStyle = `
   @media (max-width: 1023px) {
-    .founder-photo { aspect-ratio: 16 / 9 !important; }
+    .founder-photo { aspect-ratio: 3 / 4 !important; }
   }
 `;
 
@@ -57,7 +57,7 @@ export default function FounderPage() {
                 className="relative flex items-end overflow-hidden"
                 style={{
                     backgroundColor: "#0B2545",
-                    minHeight: "clamp(400px, 55vh, 520px)",
+                    minHeight: "clamp(260px, 40vh, 520px)",
                     paddingBottom: "clamp(48px, 8vh, 80px)",
                     paddingTop: "clamp(32px, 5vh, 56px)",
                 }}

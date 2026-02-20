@@ -37,7 +37,7 @@ export default function ContactPage() {
             {/* ── HERO ─────────────────────────────────────────────────────── */}
             <section
                 className="relative flex items-center justify-center overflow-hidden"
-                style={{ backgroundColor: '#0B2545', minHeight: 'clamp(400px, 55vh, 520px)' }}
+                style={{ backgroundColor: '#0B2545', minHeight: 'clamp(260px, 40vh, 520px)' }}
             >
                 {/* Standard grid overlay — matches all other inner pages */}
                 <div

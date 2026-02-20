@@ -52,7 +52,7 @@ export default function ProcessPage() {
                 className="relative flex items-center justify-center overflow-hidden text-center"
                 style={{
                     backgroundColor: "#0B2545",
-                    minHeight: "clamp(400px, 55vh, 520px)",
+                    minHeight: "clamp(260px, 40vh, 520px)",
                     paddingTop: "clamp(32px, 5vh, 56px)",
                     paddingBottom: "clamp(48px, 8vh, 80px)",
                 }}

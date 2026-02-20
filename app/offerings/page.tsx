@@ -17,7 +17,7 @@ export default function Offerings() {
                 className="relative flex items-center justify-center overflow-hidden"
                 style={{
                     backgroundColor: '#0B2545',
-                    minHeight: 'clamp(400px, 55vh, 520px)',
+                    minHeight: 'clamp(260px, 40vh, 520px)',
                 }}
             >
                 {/* Background image */}
@@ -109,7 +109,7 @@ export default function Offerings() {
                         </div>
 
                         {/* Right - Content */}
-                        <div className="order-1 lg:order-2">
+                        <div className="order-2 lg:order-2">
                             <SlideLeft delay={0}>
                                 <div
                                     className="mb-6"
@@ -213,7 +213,7 @@ export default function Offerings() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
                         {/* Left - Content */}
-                        <div className="order-1 lg:order-1">
+                        <div className="order-2 lg:order-1">
                             <SlideLeft delay={0}>
                                 <div
                                     className="mb-6"
@@ -320,7 +320,7 @@ export default function Offerings() {
                         </div>
 
                         {/* Right - Image */}
-                        <div className="order-2 lg:order-2">
+                        <div className="order-1 lg:order-2">
                             <ScaleIn delay={150}>
                                 <div
                                     className="relative w-full overflow-hidden"

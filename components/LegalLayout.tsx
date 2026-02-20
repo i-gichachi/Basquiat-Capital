@@ -35,7 +35,7 @@ export default function LegalLayout({
                 className="relative flex items-center justify-center overflow-hidden"
                 style={{
                     backgroundColor: '#0B2545',
-                    minHeight: 'clamp(320px, 42vh, 420px)',
+                    minHeight: 'clamp(260px, 40vh, 420px)',
                 }}
             >
                 {/* Subtle grid */}
