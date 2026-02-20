@@ -286,7 +286,7 @@ export default function Home() {
                     <div className="mb-14 md:mb-16">
                         <SlideLeft delay={0}>
                             <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-basquiat-gold mb-4 block">
-                                Our Practice Areas
+                                Our Mandates
                             </span>
                         </SlideLeft>
                         <SlideLeft delay={100}>
@@ -401,37 +401,71 @@ export default function Home() {
             {/* ============================================================
           SECTION 5 - OUR NETWORK
       ============================================================ */}
-            <section className="bg-[#F4F4F5] py-12 md:py-20">
+            <section className="bg-basquiat-navy py-12 md:py-20">
 
                 <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-24 items-center">
                         <div>
                             <SlideLeft delay={0}>
-                                <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-basquiat-gold mb-4 block">
-                                    Network &amp; Partnerships
+                                <span
+                                    className="font-sans block mb-4"
+                                    style={{
+                                        fontSize: '11px',
+                                        letterSpacing: '0.25em',
+                                        textTransform: 'uppercase',
+                                        color: '#F0B429'
+                                    }}
+                                >
+                                    Leadership &amp; Network
                                 </span>
                             </SlideLeft>
                             <SlideLeft delay={100}>
-                                <h2 className="font-serif text-[38px] md:text-[52px] font-normal text-basquiat-navy mb-6 leading-tight">
-                                    Our Network
+                                <h2
+                                    className="font-serif font-normal leading-tight mb-6"
+                                    style={{ fontSize: 'clamp(32px, 5vw, 56px)', color: 'white' }}
+                                >
+                                    Deliberately Lean.<br />
+                                    <span style={{ color: '#F0B429' }}>Deeply Connected.</span>
                                 </h2>
                             </SlideLeft>
+                            <div style={{ width: '40px', height: '2px', backgroundColor: '#F0B429', marginBottom: '24px' }} />
                             <FadeUp delay={200}>
-                                <p className="font-sans text-[15px] text-[#374151] leading-[1.85] mb-6">
-                                    Basquiat Capital operates through a network of strategic partners in East and Sub-Saharan Africa's private sector, institutional relationships with global financial services firms, and mode-one on-the-ground presence across key markets.
+                                <p
+                                    className="font-sans mb-10 w-full"
+                                    style={{
+                                        fontSize: 'clamp(14px, 1.7vw, 16px)',
+                                        color: 'rgba(255,255,255,0.55)',
+                                        lineHeight: 1.85,
+                                        maxWidth: '480px'
+                                    }}
+                                >
+                                    Every partner in our network adds direct value to the
+                                    opportunities we pursue. No intermediaries. No layers.
                                 </p>
                             </FadeUp>
                             <FadeUp delay={300}>
-                                <p className="font-sans text-[15px] text-[#374151] leading-[1.85] mb-10">
-                                    We are deliberately lean. Every person in our network is there because they add direct value to the opportunities we pursue.
-                                </p>
-                            </FadeUp>
-                            <FadeUp delay={400}>
                                 <Link
-                                    href="/offerings"
-                                    className="inline-block border-2 border-basquiat-navy text-basquiat-navy px-8 py-3.5 font-sans text-[12px] uppercase tracking-widest hover:bg-basquiat-navy hover:text-white transition-all duration-300"
+                                    href="/founder"
+                                    className="inline-flex items-center gap-3 font-sans transition-all duration-300"
+                                    style={{
+                                        fontSize: '11px',
+                                        letterSpacing: '0.18em',
+                                        textTransform: 'uppercase',
+                                        color: 'white',
+                                        textDecoration: 'none',
+                                        borderBottom: '1px solid rgba(255,255,255,0.3)',
+                                        paddingBottom: '4px'
+                                    }}
+                                    onMouseEnter={e => {
+                                        (e.currentTarget as HTMLAnchorElement).style.color = '#F0B429';
+                                        (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = '#F0B429';
+                                    }}
+                                    onMouseLeave={e => {
+                                        (e.currentTarget as HTMLAnchorElement).style.color = 'white';
+                                        (e.currentTarget as HTMLAnchorElement).style.borderBottomColor = 'rgba(255,255,255,0.3)';
+                                    }}
                                 >
-                                    View Our Mandates
+                                    Meet the Founder &amp; Our Network →
                                 </Link>
                             </FadeUp>
                         </div>

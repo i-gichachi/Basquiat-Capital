@@ -33,15 +33,12 @@ export default function Footer() {
                             Navigation
                         </h4>
                         <div className="flex flex-col gap-3">
-                            {['About', 'Mandates', 'FAQs', 'Contact'].map((item) => (
-                                <Link
-                                    key={item}
-                                    href={item === "Mandates" ? "/offerings" : `/${item.toLowerCase()}`}
-                                    className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors"
-                                >
-                                    {item}
-                                </Link>
-                            ))}
+                            <Link href="/about" className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors">About</Link>
+                            <Link href="/offerings" className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors">Mandates</Link>
+                            <Link href="/process" className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors">Process</Link>
+                            <Link href="/founder" className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors">Founder</Link>
+                            <Link href="/faqs" className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors">FAQs</Link>
+                            <Link href="/contact" className="font-sans text-[13px] text-basquiat-white/45 hover:text-basquiat-white transition-colors">Contact</Link>
                         </div>
                     </div>
 
