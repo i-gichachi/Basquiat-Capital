@@ -54,10 +54,9 @@ export default function FounderPage() {
                 SECTION 1 — HERO
             ================================================================ */}
             <section
-                className="relative flex items-end overflow-hidden"
+                className="relative flex items-end overflow-hidden min-h-[clamp(260px,40vh,520px)] md:min-h-[400px] md:h-[400px] md:mb-16"
                 style={{
                     backgroundColor: "#0B2545",
-                    minHeight: "clamp(260px, 40vh, 520px)",
                     paddingBottom: "clamp(48px, 8vh, 80px)",
                     paddingTop: "clamp(32px, 5vh, 56px)",
                 }}

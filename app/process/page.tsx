@@ -49,10 +49,9 @@ export default function ProcessPage() {
                 SECTION 1 — HERO (centered, dark navy)
             ================================================================ */}
             <section
-                className="relative flex items-center justify-center overflow-hidden text-center"
+                className="relative flex items-center justify-center overflow-hidden text-center min-h-[clamp(260px,40vh,520px)] md:min-h-[400px] md:h-[400px] md:mb-16"
                 style={{
                     backgroundColor: "#0B2545",
-                    minHeight: "clamp(260px, 40vh, 520px)",
                     paddingTop: "clamp(32px, 5vh, 56px)",
                     paddingBottom: "clamp(48px, 8vh, 80px)",
                 }}

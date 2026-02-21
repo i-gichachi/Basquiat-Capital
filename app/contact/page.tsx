@@ -22,7 +22,7 @@ export default function ContactPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const recipient = "info@basquiatcapital.com";
+        const recipient = "beth@basquiatcapital.com";
         const subject = encodeURIComponent(`New Enquiry: ${formState.interest} - ${formState.name}`);
         const body = encodeURIComponent(
             `Name: ${formState.name}\nEmail: ${formState.email}\nArea of Interest: ${formState.interest}\n\nMessage:\n${formState.message}`
@@ -36,8 +36,8 @@ export default function ContactPage() {
 
             {/* ── HERO ─────────────────────────────────────────────────────── */}
             <section
-                className="relative flex items-center justify-center overflow-hidden"
-                style={{ backgroundColor: '#0B2545', minHeight: 'clamp(260px, 40vh, 520px)' }}
+                className="relative flex items-center justify-center overflow-hidden min-h-[clamp(260px,40vh,520px)] md:min-h-[400px] md:h-[400px] md:mb-16"
+                style={{ backgroundColor: '#0B2545' }}
             >
                 {/* Standard grid overlay — matches all other inner pages */}
                 <div
@@ -164,13 +164,13 @@ export default function ContactPage() {
                                         Email Us
                                     </p>
                                     <a
-                                        href="mailto:info@basquiatcapital.com"
+                                        href="mailto:beth@basquiatcapital.com"
                                         className="font-serif font-light text-white transition-colors duration-300 block"
                                         style={{ fontSize: 'clamp(14px, 1.6vw, 16px)', lineHeight: 1.8 }}
                                         onMouseEnter={e => (e.currentTarget as HTMLAnchorElement).style.color = '#F0B429'}
                                         onMouseLeave={e => (e.currentTarget as HTMLAnchorElement).style.color = '#FFFFFF'}
                                     >
-                                        info@basquiatcapital.com
+                                        beth@basquiatcapital.com
                                     </a>
                                     <p
                                         className="font-sans mt-2"
@@ -365,8 +365,8 @@ export default function ContactPage() {
                                             </p>
                                             <p className="font-sans" style={{ fontSize: '13px', color: '#6B7280' }}>
                                                 Or email directly:{' '}
-                                                <a href="mailto:info@basquiatcapital.com" style={{ color: '#F0B429' }}>
-                                                    info@basquiatcapital.com
+                                                <a href="mailto:beth@basquiatcapital.com" style={{ color: '#F0B429' }}>
+                                                    beth@basquiatcapital.com
                                                 </a>
                                             </p>
                                         </div>

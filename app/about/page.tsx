@@ -10,7 +10,7 @@ export default function About() {
             {/* ============================================================
           SECTION 1 - HERO
       ============================================================ */}
-            <section className="relative flex items-center justify-center overflow-hidden" style={{ backgroundColor: '#0B2545', minHeight: 'clamp(260px, 40vh, 520px)' }}>
+            <section className="relative flex items-center justify-center overflow-hidden min-h-[clamp(260px,40vh,520px)] md:min-h-[400px] md:h-[400px] md:mb-16" style={{ backgroundColor: '#0B2545' }}>
 
                 {/* Background image */}
                 <div className="absolute inset-0 z-0">

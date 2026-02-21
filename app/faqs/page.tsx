@@ -238,10 +238,9 @@ export default function FAQs() {
 
             {/* ── HERO ─────────────────────────────────────────────── */}
             <section
-                className="relative flex items-center justify-center overflow-hidden"
+                className="relative flex items-center justify-center overflow-hidden min-h-[clamp(260px,40vh,520px)] md:min-h-[400px] md:h-[400px] md:mb-16"
                 style={{
                     backgroundColor: '#0B2545',
-                    minHeight: 'clamp(260px, 40vh, 520px)',
                 }}
             >
                 {/* Subtle grid pattern */}
